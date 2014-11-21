@@ -19,9 +19,7 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f9fd031c-ea32-42d6-ac0d-dd478a2bbc31" name="Default" comment="update">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="f9fd031c-ea32-42d6-ac0d-dd478a2bbc31" name="Default" comment="update" />
     <ignored path="Tap Ten.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
