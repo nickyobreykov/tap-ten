@@ -7,8 +7,10 @@ import android.preference.PreferenceManager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -22,6 +24,7 @@ public class OwnSettingsActivity extends Activity {
     RadioButton nellieRadioBtn;
     RadioGroup radioGroup;
     TextView quoteTV;
+    Button saveSettingsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,7 @@ public class OwnSettingsActivity extends Activity {
         nellieRadioBtn = (RadioButton) findViewById(R.id.nellieRadioBtn);
         radioGroup = (RadioGroup) findViewById(R.id.radioGroup);
         quoteTV = (TextView) findViewById(R.id.quoteTV);
+        saveSettingsBtn = (Button) findViewById(R.id.saveSettingsBtn);
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         final SharedPreferences.Editor editor = preferences.edit();
@@ -81,6 +85,14 @@ public class OwnSettingsActivity extends Activity {
             }
         });
 
+        saveSettingsBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                overridePendingTransition(R.anim.push_down_in, R.anim.push_down_out);
+            }
+        });
+
         /*
         editor.putBoolean("normalMode", normalRadioBtn.isChecked());
         editor.putBoolean("juliaMode", juliaRadioBtn.isChecked());
@@ -90,7 +102,11 @@ public class OwnSettingsActivity extends Activity {
 
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.push_down_in, R.anim.push_down_out);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
