@@ -32,6 +32,7 @@ public class MainActivity extends Activity {
     int whichMode;
     Typeface typeface;
     ImageView settingsBtn;
+    TextView logoTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +51,10 @@ public class MainActivity extends Activity {
         tvStartText.setTypeface(typeface);
         RelativeLayout mainRL = (RelativeLayout) findViewById(R.id.mainRelativeLayout);
         final Animation scaleAlphaAnim = AnimationUtils.loadAnimation(this, R.anim.scale_alpha_anim);
+        typeface = Typeface.createFromAsset(getAssets(), "flex_display_thin.otf");
+        logoTV = (TextView) findViewById(R.id.logoTV);
+        logoTV.setTypeface(typeface);
+
 
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(this);
         SharedPreferences.Editor editor = preferences.edit();
