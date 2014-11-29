@@ -35,6 +35,7 @@ public class MyCanvas extends View {
     //TextView textView;
     long globalTime;
     boolean isTouchable = true;
+    boolean firstTouch = false;
     Bitmap juliaPic;
     Bitmap juliaPicSide;
     Bitmap scaledJuliaPic;
@@ -104,6 +105,9 @@ public class MyCanvas extends View {
                     secondsLeft[0] = Math.round((float)l / 1000.0f);
                 }
                 globalTime = secondsLeft[0];
+                if (globalTime == 0){
+                    isTouchable = false;
+                }
                 Log.d("d", "" + l);
                 Log.d("d", "d" + globalTime);
                 invalidate();
@@ -116,41 +120,20 @@ public class MyCanvas extends View {
 
                 editor = preferences.edit();
                 currScore = counter;
-                int score1 = preferences.getInt("score1", 1);
-                int score2 = preferences.getInt("score2", 1);
-                int score3 = preferences.getInt("score3", 1);
-                int score4 = preferences.getInt("score4", 1);
-                int score5 = preferences.getInt("score5", 1);
-                int score6 = preferences.getInt("score6", 1);
-                int score7 = preferences.getInt("score7", 1);
-                int score8 = preferences.getInt("score8", 1);
-                int score9 = preferences.getInt("score9", 1);
-                int score10 = preferences.getInt("score10", 1);
 
-                if(currScore > score1){
-                    editor.putInt("score1", counter);
-                    Log.d("T", "s1");
-                }else if(currScore > score2){
-                    editor.putInt("score2", counter);
-                    Log.d("T", "s2");
-                }else if(currScore > score3){
-                    editor.putInt("score3", counter);
-                    Log.d("T", "s3");
-                }else if(currScore > score4){
-                    editor.putInt("score4", counter);
-                }else if(currScore > score5){
-                    editor.putInt("score5", counter);
-                }else if(currScore > score6){
-                    editor.putInt("score6", counter);
-                }else if(currScore > score7){
-                    editor.putInt("score7", counter);
-                }else if(currScore > score8){
-                    editor.putInt("score8", counter);
-                }else if(currScore > score9){
-                    editor.putInt("score9", counter);
-                }else if(currScore > score10){
-                    editor.putInt("score10", counter);
+                for(int i = 1; i<=10; i++){
+                    if(currScore > preferences.getInt("score" + i, 0)){
+                        for(int i2 = i; i2 <= 10; i2++){
+                            Log.d("d", "q" + i2);
+                            int tempScore = preferences.getInt("score" + i2, 0);
+                            editor.putInt("score" + (i2 + 1), tempScore);
+                            Log.d("d", "p" + tempScore);
+                        }
+                        editor.putInt("score" + i, counter);
+                        break;
+                    }
                 }
+
                 editor.commit();
                 invalidate();
             }
@@ -183,9 +166,11 @@ public class MyCanvas extends View {
                     canvas.drawBitmap(scaledKnife, posX - 130, posY - 50, null);
                 }
             }else{
-                //Draw circle
-                paint.setColor(Color.RED);
-                canvas.drawCircle(posX, posY, 50, paint);
+                if(firstTouch) {
+                    //Draw circle
+                    paint.setColor(Color.RED);
+                    canvas.drawCircle(posX, posY, 50, paint);
+                }
             }
         }
 
@@ -200,13 +185,11 @@ public class MyCanvas extends View {
         //Add click counter
         paint.setStyle(Paint.Style.FILL);
         paint.setColor(Color.BLACK);
-        String textCounter = String.valueOf(counter);
-        paint.setTextSize(100);
+
+        paint.setTextAlign(Paint.Align.CENTER);
         typeface = Typeface.createFromAsset(assetManager, "dense_regular.otf");
         paint.setTypeface(typeface);
         int textPosX = (canvas.getWidth() / 2);
-        //((textPaint.descent() + textPaint.ascent()) / 2) is the distance from the baseline to the center.
-        canvas.drawText(textCounter, textPosX , 150, paint);
 
         //Add results or timer
         if(globalTime == 0){
@@ -214,11 +197,11 @@ public class MyCanvas extends View {
                 canvas.drawBitmap(scaledJuliaPicSide, canvas.getWidth() / 2 - 300, canvas.getHeight() / 2 + 100, null);
                 canvas.drawBitmap(scaledBlood, 225, 775, null);
                 timerText = "Du lyckades skada\nhenne " + counter + " gånger";
-                textPosY = 1000;
+                textPosY = canvas.getHeight() - 150;
                 paint.setTextSize(50);
-                textPosX = 75;
+                textPosX = canvas.getWidth() / 2;
                 canvas.drawText(timerText, textPosX, textPosY, paint);
-                canvas.drawText("Inte tillräckligt mycket...", 155, 1050, paint);
+                canvas.drawText("Inte tillräckligt mycket...", textPosX, textPosY + 50, paint);
                 paint.setTextSize(150);
                 paint.setColor(Color.RED);
                 canvas.drawText("KO!!!", 150, 350, paint);
@@ -227,17 +210,24 @@ public class MyCanvas extends View {
                 canvas.drawText("YOU GOT REKT!!", 300, 600, paint);
             }else{
                 paint.setColor(Color.BLACK);
-                timerText = "You got " + counter + " taps in 10 sec!";
-                textPosY = 1000;
+                timerText = "You got " + counter + " taps!";
                 paint.setTextSize(75);
-                textPosX = 85;
-                canvas.drawText(timerText, textPosX, textPosY, paint);
+                int xPos = (canvas.getWidth() / 2);
+                //((textPaint.descent() + textPaint.ascent()) / 2) is the distance from the baseline to the center.
+                //makes centered on height
+                int yPos = (int) ((canvas.getHeight() / 2) - ((paint.descent() + paint.ascent()) / 2));
+                double speed = counter / 10.0;
+
+                canvas.drawText(timerText, xPos, yPos, paint);
+                canvas.drawText("Your speed: " + speed + " taps/sec!", xPos, yPos + 100, paint);
             }
         }else {
+            String textCounter = String.valueOf(counter);
+            paint.setTextSize(100);
+            canvas.drawText(textCounter, textPosX , 150, paint);
             timerText = String.valueOf(globalTime);
             paint.setTextSize(150);
-            textPosX = (canvas.getWidth() / 2 - 20);
-            textPosY = 1100;
+            textPosY = canvas.getHeight() - 100;
             canvas.drawText(timerText, textPosX, textPosY, paint);
         }
 
@@ -277,6 +267,7 @@ public class MyCanvas extends View {
 
                 case MotionEvent.ACTION_DOWN:
                     picTouched = true;
+                    firstTouch = true;
                     posX = event.getX();
                     posY = event.getY();
                     path.moveTo(event.getX(), event.getY());

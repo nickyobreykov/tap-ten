@@ -30,6 +30,7 @@ public class HighScoreActivity extends Activity {
     RelativeLayout relativeLayout;
 
     int currScore;
+    int currNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,6 +76,7 @@ public class HighScoreActivity extends Activity {
         score9.setText("9. " + String.valueOf(currScore) + " Taps");
         currScore = preferences.getInt("score10", 0);
         score10.setText("10. " + String.valueOf(currScore) + " Taps");
+        currScore = preferences.getInt("score" + currNum, 0);
 
 
     }
