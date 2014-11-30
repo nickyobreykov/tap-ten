@@ -10,7 +10,9 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
+import android.graphics.RectF;
 import android.graphics.Typeface;
+import android.graphics.drawable.shapes.OvalShape;
 import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
 import android.util.Log;
@@ -36,6 +38,7 @@ public class MyCanvas extends View {
     long globalTime;
     boolean isTouchable = true;
     boolean firstTouch = false;
+    boolean isFinished = false;
     Bitmap juliaPic;
     Bitmap juliaPicSide;
     Bitmap scaledJuliaPic;
@@ -95,6 +98,8 @@ public class MyCanvas extends View {
         blood = BitmapFactory.decodeResource(getResources(), R.drawable.blood);
         scaledBlood = scaleDown(blood, 175, true);
 
+        editor = preferences.edit();
+
         //Counter
         final int[] secondsLeft = {0};
         CountDownTimer timer = new CountDownTimer(10000, 100) {
@@ -115,10 +120,10 @@ public class MyCanvas extends View {
 
             @Override
             public void onFinish() {
+                isFinished = true;
                 isTouchable = false;
                 Log.d("d", "k" + globalTime);
 
-                editor = preferences.edit();
                 currScore = counter;
 
                 for(int i = 1; i<=10; i++){
@@ -133,6 +138,9 @@ public class MyCanvas extends View {
                         break;
                     }
                 }
+
+                int tempTotalTaps = preferences.getInt("totalTaps", 0);
+                editor.putInt("totalTaps", tempTotalTaps + counter);
 
                 editor.commit();
                 invalidate();
@@ -155,6 +163,7 @@ public class MyCanvas extends View {
         canvas.drawPaint(paint);
         paint.setAntiAlias(true);
 
+        //onTouch
         if(globalTime != 0) {
             if(whichMode == 2 || whichMode == 3) {
                 if (picTouched) {
@@ -192,7 +201,7 @@ public class MyCanvas extends View {
         int textPosX = (canvas.getWidth() / 2);
 
         //Add results or timer
-        if(globalTime == 0){
+        if(isFinished){
             if(whichMode == 2 || whichMode == 3) {
                 canvas.drawBitmap(scaledJuliaPicSide, canvas.getWidth() / 2 - 300, canvas.getHeight() / 2 + 100, null);
                 canvas.drawBitmap(scaledBlood, 225, 775, null);
@@ -220,6 +229,7 @@ public class MyCanvas extends View {
 
                 canvas.drawText(timerText, xPos, yPos, paint);
                 canvas.drawText("Your speed: " + speed + " taps/sec!", xPos, yPos + 100, paint);
+                canvas.drawText("Total Taps: " + preferences.getInt("totalTaps", 0), xPos, yPos + 200, paint);
             }
         }else {
             String textCounter = String.valueOf(counter);
@@ -263,6 +273,7 @@ public class MyCanvas extends View {
     public boolean onTouchEvent(MotionEvent event) {
 
         if(isTouchable) {
+            isFinished = false;
             switch (event.getAction()) {
 
                 case MotionEvent.ACTION_DOWN:

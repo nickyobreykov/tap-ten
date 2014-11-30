@@ -1,5 +1,6 @@
 package com.liquidafro.tapten;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -26,11 +27,19 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdSize;
+import com.google.android.gms.ads.AdView;
+
+import org.w3c.dom.Text;
+
 public class PlayActivity extends Activity {
 
     int score = 0;
     TextView tvScore;
     ImageView i;
+    AdView adView;
+    RelativeLayout relativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +49,35 @@ public class PlayActivity extends Activity {
         //getActionBar().hide();
         Log.d("e", "dsa");
 
-        //test
-        MyCanvas myCanvas = new MyCanvas(this);
-        setContentView(myCanvas);
+        adView = new AdView(this);
+        adView.setAdSize(AdSize.BANNER);
+
+        relativeLayout = new RelativeLayout(this);
+        relativeLayout.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+
+        View myCanvas = new MyCanvas(this);
+
+        //define ad view parameters
+        RelativeLayout.LayoutParams adParams =
+                new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT,
+                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+        adParams.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
+        adParams.addRule(RelativeLayout.CENTER_HORIZONTAL);
+
+
+        //ta bort, byt till adview i addview(textView, adParams);
+        TextView textView = new TextView(this);
+        textView.setText("Ad");
+        textView.setTextSize(50);
+        textView.setId(R.id.text_view);
+
+        RelativeLayout.LayoutParams canvasParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+        canvasParams.addRule(RelativeLayout.ABOVE, R.id.text_view);
+
+        relativeLayout.addView(myCanvas, canvasParams);
+        relativeLayout.addView(textView, adParams);
+
+        setContentView(relativeLayout);
 
         //Fungerar
         //DrawingView test = new DrawingView(this);
@@ -52,7 +87,6 @@ public class PlayActivity extends Activity {
         //final Animation circleExpand = AnimationUtils.loadAnimation(this, R.anim.scale_alpha_anim);
 
         //final RelativeLayout playRL = (RelativeLayout) findViewById(R.id.playRelativeLayout);
-        tvScore = (TextView) findViewById(R.id.tvScore);
 
         /*
 

@@ -14,6 +14,12 @@
         revision="20.0.0"
         sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
     <item
+        dex="/Users/bunibun/Google Drive/Android App Dev/app/build/intermediates/pre-dexed/debug/classes-8024d683d6670e4d4be777aac2c5a2e1405ebaf4.jar"
+        jar="/Users/bunibun/Google Drive/Android App Dev/app/build/intermediates/exploded-aar/com.google.android.gms/play-services/6.1.71/classes.jar"
+        jumboMode="false"
+        revision="20.0.0"
+        sha1="0f6d5c1ef2e982c3b7858408e3df389cf5d202da"/>
+    <item
         dex="/Users/bunibun/Google Drive/Android App Dev/app/build/intermediates/pre-dexed/debug/internal_impl-20.0.0-cf12e414ef15b47549a73a7ba8b03baa4a923289.jar"
         jar="/Users/bunibun/Google Drive/Android App Dev/app/build/intermediates/exploded-aar/com.android.support/support-v4/20.0.0/libs/internal_impl-20.0.0.jar"
         jumboMode="false"

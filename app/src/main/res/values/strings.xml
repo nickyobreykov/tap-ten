@@ -11,5 +11,6 @@
     <string name="title_activity_last_play">LastPlayActivity</string>
     <string name="title_activity_own_settings">OwnSettingsActivity</string>
     <string name="title_activity_high_score">HighScoreActivity</string>
+    <string name="title_activity_shop_and_achievement">ShopAndAchievementActivity</string>
 
 </resources>
