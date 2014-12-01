@@ -78,6 +78,7 @@ public class MainActivity extends Activity {
         final Intent settingsIntent = new Intent(this, OwnSettingsActivity.class);
         Button highScoreBtn = (Button) findViewById(R.id.highScoreBtn);
         final Intent highScoreIntent = new Intent(this, HighScoreActivity.class);
+        final Intent shopIntent = new Intent(this, ShopAndAchievementActivity.class);
 
         highScoreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,6 +103,14 @@ public class MainActivity extends Activity {
                 startActivity(settingsIntent);
                 overridePendingTransition(R.anim.push_up_in, R.anim.push_up_out);
                 Log.d("test", "" + whichMode);
+            }
+        });
+
+        shopBtn = (Button) findViewById(R.id.shopBtn);
+        shopBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(shopIntent);
             }
         });
 
