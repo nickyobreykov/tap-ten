@@ -51,4 +51,13 @@
         android:layout_centerHorizontal="true"
         android:src="@drawable/ic_settings"/>
 
+    <Button
+        android:id="@+id/shopBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/highScoreBtn"
+        android:text="Shop"
+        android:layout_marginTop="10dp"/>
+
 </RelativeLayout>

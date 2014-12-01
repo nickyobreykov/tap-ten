@@ -50,6 +50,7 @@ public class MyCanvas extends View {
     Bitmap scaledBlood;
     String timerText;
     int textPosY;
+    int colorNum;
     boolean picTouched = false;
     int whichMode;
     SharedPreferences preferences;
@@ -74,6 +75,7 @@ public class MyCanvas extends View {
 
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
         whichMode = preferences.getInt("mode", 5);
+        editor = preferences.edit();
 
         //Julia
         if(whichMode == 2) {
@@ -97,8 +99,6 @@ public class MyCanvas extends View {
         scaledKnife = scaleDown(knife, 175, true);
         blood = BitmapFactory.decodeResource(getResources(), R.drawable.blood);
         scaledBlood = scaleDown(blood, 175, true);
-
-        editor = preferences.edit();
 
         //Counter
         final int[] secondsLeft = {0};
@@ -177,7 +177,17 @@ public class MyCanvas extends View {
             }else{
                 if(firstTouch) {
                     //Draw circle
-                    paint.setColor(Color.RED);
+                    int i = preferences.getInt("color", 0);
+                    Log.v("colortest", "" + i);
+                    if(i == 1){
+                        Log.v("color", "1");
+                        paint.setColor(Color.parseColor("#1abc9c"));
+                    }else if(i == 2){
+                        paint.setColor(Color.parseColor("#2ecc71"));
+                    }else {
+                        Log.v("color", "red");
+                        paint.setColor(Color.RED);
+                    }
                     canvas.drawCircle(posX, posY, 50, paint);
                 }
             }

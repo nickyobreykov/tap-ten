@@ -32,6 +32,7 @@ public class MainActivity extends Activity {
     int whichMode;
     Typeface typeface;
     ImageView settingsBtn;
+    Button shopBtn;
     TextView logoTV;
 
     @Override
@@ -83,6 +84,15 @@ public class MainActivity extends Activity {
             public void onClick(View view) {
                 startActivity(highScoreIntent);
                 Log.d("testa", "" + whichMode);
+            }
+        });
+
+        shopBtn = (Button) findViewById(R.id.shopBtn);
+        final Intent shopIntent = new Intent(this, ShopAndAchievementActivity.class);
+        shopBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(shopIntent);
             }
         });
 
