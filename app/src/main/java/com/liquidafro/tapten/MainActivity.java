@@ -78,7 +78,6 @@ public class MainActivity extends Activity {
         final Intent settingsIntent = new Intent(this, OwnSettingsActivity.class);
         Button highScoreBtn = (Button) findViewById(R.id.highScoreBtn);
         final Intent highScoreIntent = new Intent(this, HighScoreActivity.class);
-        final Intent shopIntent = new Intent(this, ShopAndAchievementActivity.class);
 
         highScoreBtn.setOnClickListener(new View.OnClickListener() {
             @Override

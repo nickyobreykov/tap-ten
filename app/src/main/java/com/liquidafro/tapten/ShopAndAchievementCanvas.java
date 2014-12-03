@@ -20,6 +20,8 @@ public class ShopAndAchievementCanvas extends View{
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
 
+    public final int RECT_X_MAX = 360;
+
     public ShopAndAchievementCanvas(Context context){
         super(context);
 
@@ -39,6 +41,9 @@ public class ShopAndAchievementCanvas extends View{
         canvas.drawPaint(paint);
         paint.setAntiAlias(true);
 
+        for(int i = 0; i < RECT_X_MAX; i = i + 70){
+
+        }
         paint.setColor(Color.parseColor("#1abc9c"));
         canvas.drawRect(30, 30, 80, 80, paint);
         paint.setColor(Color.parseColor("#2ecc71"));
@@ -61,24 +66,33 @@ public class ShopAndAchievementCanvas extends View{
         paint.setColor(Color.parseColor("#95a5a6"));
         canvas.drawRect(310, 100, 360, 150, paint);
 
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(2);
+        paint.setColor(Color.BLACK);
         if(posX >= 30 && posX <= 80 && posY >= 30 && posY <= 80){
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(2);
-            paint.setColor(Color.BLACK);
             canvas.drawRect(27, 27, 83, 83, paint);
-
             editor.putInt("color", 1);
             editor.commit();
-            Log.d("t", "first square");
         }else if(posX >= 100 && posX <= 150 && posY >= 30 && posY <= 80){
-            paint.setStyle(Paint.Style.STROKE);
-            paint.setStrokeWidth(2);
-            paint.setColor(Color.BLACK);
             canvas.drawRect(97, 27, 153, 83, paint);
-
             editor.putInt("color", 2);
             editor.commit();
-            Log.d("t", "second square");
+        }else if(posX >= 170 && posX <= 220 && posY >= 30 && posY <= 80) {
+            canvas.drawRect(167, 27, 223, 83, paint);
+            editor.putInt("color", 3);
+            editor.commit();
+        }else if(posX >= 170 && posX <= 220 && posY >= 30 && posY <= 80) {
+            canvas.drawRect(167, 27, 223, 83, paint);
+            editor.putInt("color", 3);
+            editor.commit();
+        }else if(posX >= 170 && posX <= 220 && posY >= 30 && posY <= 80) {
+            canvas.drawRect(167, 27, 223, 83, paint);
+            editor.putInt("color", 3);
+            editor.commit();
+        }else if(posX >= 170 && posX <= 220 && posY >= 30 && posY <= 80) {
+            canvas.drawRect(167, 27, 223, 83, paint);
+            editor.putInt("color", 3);
+            editor.commit();
         }
 
 

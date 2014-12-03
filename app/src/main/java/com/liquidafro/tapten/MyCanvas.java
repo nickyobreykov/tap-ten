@@ -184,6 +184,8 @@ public class MyCanvas extends View {
                         paint.setColor(Color.parseColor("#1abc9c"));
                     }else if(i == 2){
                         paint.setColor(Color.parseColor("#2ecc71"));
+                    }else if(i == 3){
+                        paint.setColor(Color.parseColor("#3498db"));
                     }else {
                         Log.v("color", "red");
                         paint.setColor(Color.RED);
