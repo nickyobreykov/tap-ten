@@ -10,6 +10,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import java.util.ArrayList;
+
 /**
  * Created by bunibun on 01/12/14.
  */
@@ -19,8 +21,15 @@ public class ShopAndAchievementCanvas extends View{
     float posX, posY;
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
+    String[] colorArray;
+    int leftStart = 30;
+    int rightStart = 80;
+    int colorNum = 0;
 
     public final int RECT_X_MAX = 360;
+    public final int RECT_X_MIN = 30;
+    public final int RECT_Y_MIN = 30;
+    public final int RECT_Y_MAX = 80;
 
     public ShopAndAchievementCanvas(Context context){
         super(context);
@@ -29,6 +38,9 @@ public class ShopAndAchievementCanvas extends View{
 
         preferences = PreferenceManager.getDefaultSharedPreferences(context);
         editor = preferences.edit();
+
+        colorArray = new String[]{"#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e",
+                "#f1c40f", "#e67e22", "#e74c3c", "#ecf0f1", "#95a5a6"};
 
     }
 
@@ -41,10 +53,18 @@ public class ShopAndAchievementCanvas extends View{
         canvas.drawPaint(paint);
         paint.setAntiAlias(true);
 
-        for(int i = 0; i < RECT_X_MAX; i = i + 70){
+        for(int i = RECT_X_MIN; i < RECT_X_MAX; i = i + 70){
+            paint.setColor(Color.parseColor(colorArray[colorNum]));
+            canvas.drawRect(leftStart, RECT_Y_MIN, rightStart, RECT_Y_MAX, paint);
+            leftStart = leftStart + 70;
+            rightStart = rightStart + 70;
+            colorNum++;
+            //ändra rect_y_min och max till vanliga variabler
 
         }
-        paint.setColor(Color.parseColor("#1abc9c"));
+
+        /*
+        paint.setColor(Color.parseColor(colorArray[0]));
         canvas.drawRect(30, 30, 80, 80, paint);
         paint.setColor(Color.parseColor("#2ecc71"));
         canvas.drawRect(100, 30, 150, 80, paint);
@@ -94,6 +114,7 @@ public class ShopAndAchievementCanvas extends View{
             editor.putInt("color", 3);
             editor.commit();
         }
+        */
 
 
 
