@@ -180,19 +180,38 @@ public class MyCanvas extends View {
                 }
             }else{
                 if(firstTouch) {
-                    //Draw circle
-                    int i = preferences.getInt("color", 0);
-                    Log.v("colortest", "" + i);
-                    if(i == 1){
-                        Log.v("color", "1");
-                        paint.setColor(Color.parseColor("#1abc9c"));
-                    }else if(i == 2){
-                        paint.setColor(Color.parseColor("#2ecc71"));
-                    }else if(i == 3){
-                        paint.setColor(Color.parseColor("#3498db"));
-                    }else {
-                        Log.v("color", "red");
-                        paint.setColor(Color.RED);
+                    //Draw circle with color
+                    switch (preferences.getInt("color", 0)){
+                        case 0:
+                            paint.setColor(Color.parseColor("#1abc9c"));
+                            break;
+                        case 1:
+                            paint.setColor(Color.parseColor("#2ecc71"));
+                            break;
+                        case 2:
+                            paint.setColor(Color.parseColor("#3498db"));
+                            break;
+                        case 3:
+                            paint.setColor(Color.parseColor("#9b59b6"));
+                            break;
+                        case 4:
+                            paint.setColor(Color.parseColor("#34495e"));
+                            break;
+                        case 5:
+                            paint.setColor(Color.parseColor("#f1c40f"));
+                            break;
+                        case 6:
+                            paint.setColor(Color.parseColor("#e67e22"));
+                            break;
+                        case 7:
+                            paint.setColor(Color.parseColor("#e74c3c"));
+                            break;
+                        case 8:
+                            paint.setColor(Color.parseColor("#ecf0f1"));
+                            break;
+                        case 9:
+                            paint.setColor(Color.parseColor("#95a5a6"));
+                            break;
                     }
                     canvas.drawCircle(posX, posY, 50, paint);
                 }

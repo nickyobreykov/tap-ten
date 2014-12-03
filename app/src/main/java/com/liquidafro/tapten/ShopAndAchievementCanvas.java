@@ -22,9 +22,10 @@ public class ShopAndAchievementCanvas extends View{
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     String[] colorArray;
-    int leftStart = 30;
-    int rightStart = 80;
-    int colorNum = 0;
+    int leftStart;
+    int rightStart;
+    int colorNum;
+    int colorNum2;
 
     public final int RECT_X_MAX = 360;
     public final int RECT_X_MIN = 30;
@@ -53,6 +54,11 @@ public class ShopAndAchievementCanvas extends View{
         canvas.drawPaint(paint);
         paint.setAntiAlias(true);
 
+        //Draw rects
+        colorNum = 0;
+        colorNum2 = 5;
+        rightStart = 80;
+        leftStart = 30;
         for(int i = RECT_X_MIN; i < RECT_X_MAX; i = i + 70){
             paint.setColor(Color.parseColor(colorArray[colorNum]));
             canvas.drawRect(leftStart, RECT_Y_MIN, rightStart, RECT_Y_MAX, paint);
@@ -61,6 +67,15 @@ public class ShopAndAchievementCanvas extends View{
             colorNum++;
             //ändra rect_y_min och max till vanliga variabler
 
+        }
+        rightStart = 80;
+        leftStart = 30;
+        for(int i2 = RECT_X_MIN; i2 < RECT_X_MAX; i2 = i2 + 70){
+            paint.setColor(Color.parseColor(colorArray[colorNum2]));
+            canvas.drawRect(leftStart, RECT_Y_MIN + 70, rightStart, RECT_Y_MAX + 70, paint);
+            leftStart += 70;
+            rightStart += 70;
+            colorNum2++;
         }
 
         /*
