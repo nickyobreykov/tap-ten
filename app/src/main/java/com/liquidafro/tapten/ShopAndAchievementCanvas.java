@@ -22,10 +22,9 @@ public class ShopAndAchievementCanvas extends View{
     SharedPreferences preferences;
     SharedPreferences.Editor editor;
     String[] colorArray;
-    int leftStart;
-    int rightStart;
+    int[] rightStart;
+    int[] leftStart;
     int colorNum;
-    int colorNum2;
 
     public final int RECT_X_MAX = 360;
     public final int RECT_X_MIN = 30;
@@ -54,29 +53,56 @@ public class ShopAndAchievementCanvas extends View{
         canvas.drawPaint(paint);
         paint.setAntiAlias(true);
 
+        //init rightStart and leftStart
+        rightStart = new int[5];
+        leftStart = new int[5];
+        int tempRightStart = RECT_X_MIN + 50;
+        int intPos = 0;
+        for(int tempLeftStart = RECT_X_MIN; tempLeftStart < RECT_X_MAX; tempLeftStart += 70) {
+            rightStart[intPos] = tempRightStart;
+            leftStart[intPos] = tempLeftStart;
+            tempRightStart += 70;
+            intPos++;
+        }
+
         //Draw rects
         colorNum = 0;
-        colorNum2 = 5;
-        rightStart = 80;
-        leftStart = 30;
-        for(int i = RECT_X_MIN; i < RECT_X_MAX; i = i + 70){
+        for(int i = 0; i < rightStart.length; i++) {
             paint.setColor(Color.parseColor(colorArray[colorNum]));
-            canvas.drawRect(leftStart, RECT_Y_MIN, rightStart, RECT_Y_MAX, paint);
-            leftStart = leftStart + 70;
-            rightStart = rightStart + 70;
+            canvas.drawRect(leftStart[i], RECT_Y_MIN, rightStart[i], RECT_Y_MAX, paint);
             colorNum++;
-            //ändra rect_y_min och max till vanliga variabler
+            //ändra rect_y_min och max till vanliga variabler, eller?
+        }
+        for(int i = 0; i < rightStart.length; i++){
+            paint.setColor(Color.parseColor(colorArray[colorNum]));
+            canvas.drawRect(leftStart[i], RECT_Y_MIN + 70, rightStart[i], RECT_Y_MAX + 70, paint);
+            colorNum++;
+        }
 
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(2);
+        paint.setColor(Color.BLACK);
+        if(posX >= leftStart[0] && posX <= rightStart[0] && posY >= RECT_Y_MIN && posY <= RECT_Y_MAX){
+            canvas.drawRect(leftStart[0] - 3, RECT_Y_MIN - 3, rightStart[0] + 3, RECT_Y_MAX + 3, paint);
+            editor.putInt("color", 1);
+        }else if(posX >= leftStart[1] && posX <= rightStart[1] && posY >= RECT_Y_MIN && posY <= RECT_Y_MAX){
+            canvas.drawRect(leftStart[1] - 3, RECT_Y_MIN - 3, rightStart[1] + 3, RECT_Y_MAX + 3, paint);
+            editor.putInt("color", 2);
+        }else if(posX >= leftStart[2] && posX <= rightStart[3] && posY >= RECT_Y_MIN && posY <= RECT_Y_MAX) {
+            canvas.drawRect(leftStart[2] - 3, RECT_Y_MIN - 3, rightStart[2] + 3, RECT_Y_MAX + 3, paint);
+            editor.putInt("color", 3);
+        } /*else if(posX >= 170 && posX <= 220 && posY >= 30 && posY <= 80) {
+            canvas.drawRect(167, 27, 223, 83, paint);
+            editor.putInt("color", 3);
+        }else if(posX >= 170 && posX <= 220 && posY >= 30 && posY <= 80) {
+            canvas.drawRect(167, 27, 223, 83, paint);
+            editor.putInt("color", 3);
+        }else if(posX >= 170 && posX <= 220 && posY >= 30 && posY <= 80) {
+            canvas.drawRect(167, 27, 223, 83, paint);
+            editor.putInt("color", 3);
         }
-        rightStart = 80;
-        leftStart = 30;
-        for(int i2 = RECT_X_MIN; i2 < RECT_X_MAX; i2 = i2 + 70){
-            paint.setColor(Color.parseColor(colorArray[colorNum2]));
-            canvas.drawRect(leftStart, RECT_Y_MIN + 70, rightStart, RECT_Y_MAX + 70, paint);
-            leftStart += 70;
-            rightStart += 70;
-            colorNum2++;
-        }
+        */
+        editor.commit();
 
         /*
         paint.setColor(Color.parseColor(colorArray[0]));
@@ -100,38 +126,7 @@ public class ShopAndAchievementCanvas extends View{
         canvas.drawRect(240, 100, 290, 150, paint);
         paint.setColor(Color.parseColor("#95a5a6"));
         canvas.drawRect(310, 100, 360, 150, paint);
-
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(2);
-        paint.setColor(Color.BLACK);
-        if(posX >= 30 && posX <= 80 && posY >= 30 && posY <= 80){
-            canvas.drawRect(27, 27, 83, 83, paint);
-            editor.putInt("color", 1);
-            editor.commit();
-        }else if(posX >= 100 && posX <= 150 && posY >= 30 && posY <= 80){
-            canvas.drawRect(97, 27, 153, 83, paint);
-            editor.putInt("color", 2);
-            editor.commit();
-        }else if(posX >= 170 && posX <= 220 && posY >= 30 && posY <= 80) {
-            canvas.drawRect(167, 27, 223, 83, paint);
-            editor.putInt("color", 3);
-            editor.commit();
-        }else if(posX >= 170 && posX <= 220 && posY >= 30 && posY <= 80) {
-            canvas.drawRect(167, 27, 223, 83, paint);
-            editor.putInt("color", 3);
-            editor.commit();
-        }else if(posX >= 170 && posX <= 220 && posY >= 30 && posY <= 80) {
-            canvas.drawRect(167, 27, 223, 83, paint);
-            editor.putInt("color", 3);
-            editor.commit();
-        }else if(posX >= 170 && posX <= 220 && posY >= 30 && posY <= 80) {
-            canvas.drawRect(167, 27, 223, 83, paint);
-            editor.putInt("color", 3);
-            editor.commit();
-        }
         */
-
-
 
     }
 

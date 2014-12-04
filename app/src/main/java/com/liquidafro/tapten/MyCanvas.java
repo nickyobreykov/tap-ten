@@ -182,34 +182,34 @@ public class MyCanvas extends View {
                 if(firstTouch) {
                     //Draw circle with color
                     switch (preferences.getInt("color", 0)){
-                        case 0:
+                        case 1:
                             paint.setColor(Color.parseColor("#1abc9c"));
                             break;
-                        case 1:
+                        case 2:
                             paint.setColor(Color.parseColor("#2ecc71"));
                             break;
-                        case 2:
+                        case 3:
                             paint.setColor(Color.parseColor("#3498db"));
                             break;
-                        case 3:
+                        case 4:
                             paint.setColor(Color.parseColor("#9b59b6"));
                             break;
-                        case 4:
+                        case 5:
                             paint.setColor(Color.parseColor("#34495e"));
                             break;
-                        case 5:
+                        case 6:
                             paint.setColor(Color.parseColor("#f1c40f"));
                             break;
-                        case 6:
+                        case 7:
                             paint.setColor(Color.parseColor("#e67e22"));
                             break;
-                        case 7:
+                        case 8:
                             paint.setColor(Color.parseColor("#e74c3c"));
                             break;
-                        case 8:
+                        case 9:
                             paint.setColor(Color.parseColor("#ecf0f1"));
                             break;
-                        case 9:
+                        case 10:
                             paint.setColor(Color.parseColor("#95a5a6"));
                             break;
                     }
