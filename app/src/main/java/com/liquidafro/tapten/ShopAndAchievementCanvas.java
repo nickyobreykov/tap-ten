@@ -88,18 +88,30 @@ public class ShopAndAchievementCanvas extends View{
         }else if(posX >= leftStart[1] && posX <= rightStart[1] && posY >= RECT_Y_MIN && posY <= RECT_Y_MAX){
             canvas.drawRect(leftStart[1] - 3, RECT_Y_MIN - 3, rightStart[1] + 3, RECT_Y_MAX + 3, paint);
             editor.putInt("color", 2);
-        }else if(posX >= leftStart[2] && posX <= rightStart[3] && posY >= RECT_Y_MIN && posY <= RECT_Y_MAX) {
+        }else if(posX >= leftStart[2] && posX <= rightStart[2] && posY >= RECT_Y_MIN && posY <= RECT_Y_MAX) {
             canvas.drawRect(leftStart[2] - 3, RECT_Y_MIN - 3, rightStart[2] + 3, RECT_Y_MAX + 3, paint);
             editor.putInt("color", 3);
-        } /*else if(posX >= 170 && posX <= 220 && posY >= 30 && posY <= 80) {
-            canvas.drawRect(167, 27, 223, 83, paint);
-            editor.putInt("color", 3);
-        }else if(posX >= 170 && posX <= 220 && posY >= 30 && posY <= 80) {
-            canvas.drawRect(167, 27, 223, 83, paint);
-            editor.putInt("color", 3);
-        }else if(posX >= 170 && posX <= 220 && posY >= 30 && posY <= 80) {
-            canvas.drawRect(167, 27, 223, 83, paint);
-            editor.putInt("color", 3);
+        }else if(posX >= leftStart[3] && posX <= rightStart[3] && posY >= RECT_Y_MIN && posY <= RECT_Y_MAX) {
+            canvas.drawRect(leftStart[3] - 3, RECT_Y_MIN - 3, rightStart[3] + 3, RECT_Y_MAX + 3, paint);
+            editor.putInt("color", 4);
+        }else if(posX >= leftStart[4] && posX <= rightStart[4] && posY >= RECT_Y_MIN && posY <= RECT_Y_MAX) {
+            canvas.drawRect(leftStart[4] - 3, RECT_Y_MIN - 3, rightStart[4] + 3, RECT_Y_MAX + 3, paint);
+            editor.putInt("color", 5);
+        }/*else if(posX >= leftStart[0] && posX <= rightStart[0] && posY >= RECT_Y_MIN && posY <= RECT_Y_MAX) {
+            canvas.drawRect(leftStart[0] - 3, RECT_Y_MIN - 3, rightStart[0] + 3, RECT_Y_MAX + 3, paint);
+            editor.putInt("color", 6);
+        }else if(posX >= leftStart[1] && posX <= rightStart[1] && posY >= RECT_Y_MIN && posY <= RECT_Y_MAX) {
+            canvas.drawRect(leftStart[1] - 3, RECT_Y_MIN - 3, rightStart[1] + 3, RECT_Y_MAX + 3, paint);
+            editor.putInt("color", 7);
+        }else if(posX >= leftStart[2] && posX <= rightStart[2] && posY >= RECT_Y_MIN && posY <= RECT_Y_MAX) {
+            canvas.drawRect(leftStart[2] - 3, RECT_Y_MIN - 3, rightStart[2] + 3, RECT_Y_MAX + 3, paint);
+            editor.putInt("color", 8);
+        }else if(posX >= leftStart[3] && posX <= rightStart[3] && posY >= RECT_Y_MIN && posY <= RECT_Y_MAX) {
+            canvas.drawRect(leftStart[3] - 3, RECT_Y_MIN - 3, rightStart[3] + 3, RECT_Y_MAX + 3, paint);
+            editor.putInt("color", 9);
+        }else if(posX >= leftStart[4] && posX <= rightStart[4] && posY >= RECT_Y_MIN && posY <= RECT_Y_MAX) {
+            canvas.drawRect(leftStart[4] - 3, RECT_Y_MIN - 3, rightStart[4] + 3, RECT_Y_MAX + 3, paint);
+            editor.putInt("color", 10);
         }
         */
         editor.commit();
