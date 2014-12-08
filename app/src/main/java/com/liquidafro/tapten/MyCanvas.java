@@ -3,6 +3,7 @@ package com.liquidafro.tapten;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -13,11 +14,15 @@ import android.graphics.Point;
 import android.graphics.RectF;
 import android.graphics.Typeface;
 import android.graphics.drawable.shapes.OvalShape;
+import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -58,14 +63,20 @@ public class MyCanvas extends View {
     Typeface typeface;
     AssetManager assetManager;
     String[] colorArray;
-
+    int displayHeight;
+    int displayWidth;
     int currScore;
+    MediaPlayer mp;
 
     public MyCanvas(Context context) {
         super(context);
         paint = new Paint();
         path = new Path();
         assetManager = context.getAssets();
+
+        WindowManager mWinMgr = (WindowManager)context.getSystemService(Context.WINDOW_SERVICE);
+        displayHeight = mWinMgr.getDefaultDisplay().getHeight();
+        displayWidth = mWinMgr.getDefaultDisplay().getWidth();
 
         //layout = new LinearLayout(context);
         //textView = new TextView(context);
@@ -80,6 +91,8 @@ public class MyCanvas extends View {
 
         colorArray = new String[]{"#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e",
                 "#f1c40f", "#e67e22", "#e74c3c", "#ecf0f1", "#95a5a6"};
+
+        mp = MediaPlayer.create(context, R.raw.painosound);
 
         //Julia
         if(whichMode == 2) {
@@ -265,6 +278,16 @@ public class MyCanvas extends View {
                 canvas.drawText(timerText, xPos, yPos, paint);
                 canvas.drawText("Your speed: " + speed + " taps/sec!", xPos, yPos + 100, paint);
                 canvas.drawText("Total Taps: " + preferences.getInt("totalTaps", 0), xPos, yPos + 200, paint);
+
+                //Restart and Menu
+                paint.setTextSize(75);
+                paint.setStyle(Paint.Style.STROKE);
+                paint.setStrokeWidth(3);
+                canvas.drawRoundRect(new RectF(xPos - (xPos / 2), yPos + (yPos / 2) - 25, xPos - (xPos / 2) + 150, yPos + (yPos / 2) + 100), 6, 6, paint);
+                canvas.drawRoundRect(new RectF(xPos + 25, yPos + 325, xPos + 250, yPos + 425), 10, 10, paint);
+                paint.setStyle(Paint.Style.FILL);
+                canvas.drawText("Replay", xPos - 200, yPos + 400, paint);
+
             }
         }else {
             String textCounter = String.valueOf(counter);
@@ -274,6 +297,8 @@ public class MyCanvas extends View {
             paint.setTextSize(150);
             textPosY = canvas.getHeight() - 100;
             canvas.drawText(timerText, textPosX, textPosY, paint);
+            Log.d("e", "dgs");
+            mp.start();
         }
 
         //paint.setTextSize(250);
@@ -348,5 +373,13 @@ public class MyCanvas extends View {
         //return super.onTouchEvent(event);
 
 
+    }
+
+    //Ta bort
+    public float getDp (float num){
+        // Converts x dip into its equivalent px
+        Resources r = getResources();
+        float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, num, r.getDisplayMetrics());
+        return px;
     }
 }
