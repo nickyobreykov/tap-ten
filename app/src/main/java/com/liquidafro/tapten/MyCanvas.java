@@ -10,21 +10,16 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Path;
-import android.graphics.Point;
 import android.graphics.RectF;
 import android.graphics.Typeface;
-import android.graphics.drawable.shapes.OvalShape;
 import android.media.MediaPlayer;
 import android.os.CountDownTimer;
 import android.preference.PreferenceManager;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 /**
  * Created by bunibun on 16/11/14.
@@ -92,7 +87,7 @@ public class MyCanvas extends View {
         colorArray = new String[]{"#1abc9c", "#2ecc71", "#3498db", "#9b59b6", "#34495e",
                 "#f1c40f", "#e67e22", "#e74c3c", "#ecf0f1", "#95a5a6"};
 
-        mp = MediaPlayer.create(context, R.raw.painosound);
+        mp = MediaPlayer.create(context, R.raw.pianosound);
 
         //Julia
         if(whichMode == 2) {
@@ -286,7 +281,8 @@ public class MyCanvas extends View {
                 canvas.drawRoundRect(new RectF(xPos - (xPos / 2), yPos + (yPos / 2) - 25, xPos - (xPos / 2) + 150, yPos + (yPos / 2) + 100), 6, 6, paint);
                 canvas.drawRoundRect(new RectF(xPos + 25, yPos + 325, xPos + 250, yPos + 425), 10, 10, paint);
                 paint.setStyle(Paint.Style.FILL);
-                canvas.drawText("Replay", xPos - 200, yPos + 400, paint);
+                paint.setTextAlign(Paint.Align.RIGHT);
+                canvas.drawText("Replay", xPos - 20, yPos, paint);
 
             }
         }else {
