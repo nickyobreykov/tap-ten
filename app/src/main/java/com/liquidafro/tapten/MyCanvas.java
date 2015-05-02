@@ -1,6 +1,7 @@
 package com.liquidafro.tapten;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
@@ -125,8 +126,8 @@ public class MyCanvas extends View {
                 if (globalTime == 0){
                     isTouchable = false;
                 }
-                Log.d("d", "" + l);
-                Log.d("d", "d" + globalTime);
+                //Log.d("d", "" + l);
+                //Log.d("d", "d" + globalTime);
                 invalidate();
             }
 
@@ -138,6 +139,7 @@ public class MyCanvas extends View {
 
                 currScore = counter;
 
+                //put in high score?
                 for(int i = 1; i<=10; i++){
                     if(currScore > preferences.getInt("score" + i, 0)){
                         for(int i2 = i; i2 <= 10; i2++){
@@ -261,6 +263,15 @@ public class MyCanvas extends View {
                 paint.setColor(Color.BLUE);
                 canvas.drawText("YOU GOT REKT!!", 300, 600, paint);
             }else{
+
+                editor.putInt("tempResult", counter);
+                editor.commit();
+
+                Intent test = new Intent(getContext(), FinishActivity.class);
+                getContext().startActivity(test);
+
+                /*
+                rita result på canvas
                 paint.setColor(Color.BLACK);
                 timerText = "You got " + counter + " taps!";
                 paint.setTextSize(75);
@@ -283,6 +294,7 @@ public class MyCanvas extends View {
                 paint.setStyle(Paint.Style.FILL);
                 paint.setTextAlign(Paint.Align.RIGHT);
                 canvas.drawText("Replay", xPos - 20, yPos, paint);
+                */
 
             }
         }else {
@@ -293,7 +305,7 @@ public class MyCanvas extends View {
             paint.setTextSize(150);
             textPosY = canvas.getHeight() - 100;
             canvas.drawText(timerText, textPosX, textPosY, paint);
-            Log.d("e", "dgs");
+            //Log.d("e", "dgs");
             mp.start();
         }
 

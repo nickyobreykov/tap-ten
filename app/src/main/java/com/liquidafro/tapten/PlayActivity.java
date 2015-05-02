@@ -31,6 +31,7 @@ import android.widget.TextView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdSize;
 import com.google.android.gms.ads.AdView;
+import com.liquidafro.tapten.util.SystemUiHider;
 
 import org.w3c.dom.Text;
 
@@ -75,11 +76,11 @@ public class PlayActivity extends Activity {
         RelativeLayout.LayoutParams canvasParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
         canvasParams.addRule(RelativeLayout.ABOVE, R.id.text_view);
 
+
         relativeLayout.addView(myCanvas, canvasParams);
         relativeLayout.addView(textView, adParams);
 
         setContentView(relativeLayout);
-
         //Fungerar
         //DrawingView test = new DrawingView(this);
         //setContentView(test);

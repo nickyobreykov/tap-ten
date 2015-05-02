@@ -1,29 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<pre-dex-items>
+<items version="2" >
 
     <item
-        dex="C:\Users\Programmering\Desktop\git\app\build\intermediates\pre-dexed\debug\classes-91c6e71b5ecc450932b407652b18d0893ff802d6.jar"
-        jar="C:\Users\Programmering\Desktop\git\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\classes.jar"
+        jar="C:\Users\Bun\StudioProjects\tap-ten\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="8694693636ab36910c8100ce527c258ff3ebece0"/>
+        sha1="c95ba8152923e4872e86a82cfcba9a51c0214328">
+        <dex dex="C:\Users\Bun\StudioProjects\tap-ten\app\build\intermediates\pre-dexed\debug\classes-facdef0c1cf71df3fc0b00db43582f2197dac22c.jar" />
+    </item>
     <item
-        dex="C:\Users\Programmering\Desktop\git\app\build\intermediates\pre-dexed\debug\internal_impl-20.0.0-516fef640721b47667ea07ed4e8d1e29beb8640a.jar"
-        jar="C:\Users\Programmering\Desktop\git\app\build\intermediates\exploded-aar\com.android.support\support-v4\20.0.0\libs\internal_impl-20.0.0.jar"
+        jar="C:\Users\Bun\StudioProjects\tap-ten\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.1.1\jars\libs\internal_impl-22.1.1.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="e40b3078e3fbd353c9f44da8df25a8fc0078209d"/>
+        sha1="9e070ad32b2700b0343e8e0cccc437733d91ba3a">
+        <dex dex="C:\Users\Bun\StudioProjects\tap-ten\app\build\intermediates\pre-dexed\debug\internal_impl-22.1.1-a0f4940982c6b0d0ca6f2e2265e4a7a2523445c7.jar" />
+    </item>
     <item
-        dex="C:\Users\Programmering\Desktop\git\app\build\intermediates\pre-dexed\debug\classes-2df53e8ecaf3064a1c676c86339efd3157a5cf14.jar"
-        jar="C:\Users\Programmering\Desktop\git\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.1.71\classes.jar"
+        jar="C:\Users\Bun\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.1.1\support-annotations-22.1.1.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="0f6d5c1ef2e982c3b7858408e3df389cf5d202da"/>
+        sha1="01d051a6bfb1218b1db2d3a5af0480ac2c25c42a">
+        <dex dex="C:\Users\Bun\StudioProjects\tap-ten\app\build\intermediates\pre-dexed\debug\support-annotations-22.1.1-ba0ba92054088fb313bd0c64706e15f38cc87b32.jar" />
+    </item>
     <item
-        dex="C:\Users\Programmering\Desktop\git\app\build\intermediates\pre-dexed\debug\support-annotations-20.0.0-84d479ab30ee3d7895e880102fffd233c632530f.jar"
-        jar="C:\Program Files\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\20.0.0\support-annotations-20.0.0.jar"
+        jar="C:\Users\Bun\StudioProjects\tap-ten\app\build\intermediates\exploded-aar\com.google.android.gms\play-services\6.5.87\jars\classes.jar"
         jumboMode="false"
         revision="20.0.0"
-        sha1="9d9013e9ff35fc3756411e62873c363c70c638fa"/>
+        sha1="dd9247ea0fabe8ee479638c4b4a23e93752be256">
+        <dex dex="C:\Users\Bun\StudioProjects\tap-ten\app\build\intermediates\pre-dexed\debug\classes-1c477f8a7598e5a46456ba5362b49975da810749.jar" />
+    </item>
 
-</pre-dex-items>
+</items>
