@@ -7,25 +7,73 @@
     tools:context="com.liquidafro.tapten.FinishActivity">
 
     <TextView
+        android:id="@+id/youGotTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="You got"
+        android:textSize="50dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        />
+
+    <TextView
         android:id="@+id/scoreTV"
-        android:text="@string/hello_world" android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:text="-1"
+        android:textSize="100dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/youGotTV"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="25dp" />
+
+    <TextView
+        android:id="@+id/tapsTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="taps!"
+        android:textSize="50dp"
+        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/scoreTV"
+        />
+
+    <TextView
+        android:id="@+id/showHighScoreTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test"
+        android:layout_marginTop="25dp"
+        android:layout_below="@id/tapsTV"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"/>
+
+    <TextView
+        android:id="@+id/showHighScoreTV2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="test"
+        android:layout_below="@id/showHighScoreTV"
+        android:layout_centerHorizontal="true"
+        android:textSize="20dp"/>
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Play Again!"
         android:id="@+id/restartBtn"
-        android:layout_below="@+id/scoreTV"
-        android:layout_toEndOf="@+id/scoreTV"
-        android:layout_marginTop="162dp" />
+        android:layout_alignTop="@+id/homeBtn"
+        android:layout_marginLeft="50dp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Go home"
         android:id="@+id/homeBtn"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/restartBtn" />
+        android:layout_marginBottom="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="50dp"
+        />
 
 </RelativeLayout>

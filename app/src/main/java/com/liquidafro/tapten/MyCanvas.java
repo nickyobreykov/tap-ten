@@ -139,7 +139,7 @@ public class MyCanvas extends View {
 
                 currScore = counter;
 
-                //put in high score?
+                //put in high score
                 for(int i = 1; i<=10; i++){
                     if(currScore > preferences.getInt("score" + i, 0)){
                         for(int i2 = i; i2 <= 10; i2++){
@@ -149,7 +149,10 @@ public class MyCanvas extends View {
                             Log.d("d", "p" + tempScore);
                         }
                         editor.putInt("score" + i, counter);
+                        editor.putInt("tempPlace", i);
                         break;
+                    }else{
+                        editor.putInt("tempPlace", -1);
                     }
                 }
 
