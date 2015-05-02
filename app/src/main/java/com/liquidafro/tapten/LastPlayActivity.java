@@ -31,7 +31,7 @@ public class LastPlayActivity extends Activity implements View.OnTouchListener {
         Log.d("d", "gds");
         v.setOnTouchListener(this);
         Log.d("d", "gdwes");
-        //circle = BitmapFactory.decodeResource(getResources(), R.drawable.circle);
+        //circlepng = BitmapFactory.decodeResource(getResources(), R.drawable.circlepng);
         x = y = 0;
         Log.d("d", "ghedfdsas");
         setContentView(v);

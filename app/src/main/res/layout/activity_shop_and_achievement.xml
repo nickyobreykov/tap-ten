@@ -12,11 +12,11 @@
         android:layout_height="wrap_content"
         android:text="test"/>
 
-    <GridView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <View
+        android:id="@+id/firstCircle"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/circle"/>
 
-
-        </GridView>
 
 </RelativeLayout>

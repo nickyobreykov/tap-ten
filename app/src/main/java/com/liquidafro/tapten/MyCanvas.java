@@ -193,7 +193,7 @@ public class MyCanvas extends View {
                 }
             }else{
                 if(firstTouch) {
-                    //Draw circle with color
+                    //Draw circlepng with color
                     switch (preferences.getInt("color", 0)){
                         case 1:
                             paint.setColor(Color.parseColor("#1abc9c"));

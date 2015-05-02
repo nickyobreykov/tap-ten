@@ -30,7 +30,7 @@ public class MySurfaceView extends SurfaceView implements Runnable{
             }
             Canvas canvas = holder.lockCanvas();
             canvas.drawColor(Color.RED);
-            //canvas.drawBitmap(circle, x, y, null);
+            //canvas.drawBitmap(circlepng, x, y, null);
             holder.unlockCanvasAndPost(canvas);
         }
     }
