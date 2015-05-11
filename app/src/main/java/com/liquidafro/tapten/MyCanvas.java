@@ -45,6 +45,7 @@ public class MyCanvas extends View {
     Bitmap scaledJuliaPic;
     Bitmap scaledJuliaPicSmall;
     Bitmap scaledJuliaPicSide;
+    Bitmap testBMCircle;
     Bitmap knife;
     Bitmap scaledKnife;
     Bitmap blood;
@@ -89,6 +90,8 @@ public class MyCanvas extends View {
                 "#f1c40f", "#e67e22", "#e74c3c", "#ecf0f1", "#95a5a6"};
 
         mp = MediaPlayer.create(context, R.raw.pianosound);
+
+        testBMCircle = BitmapFactory.decodeResource(getResources(), R.drawable.circle);
 
         //Julia
         if(whichMode == 2) {
@@ -226,6 +229,9 @@ public class MyCanvas extends View {
                             paint.setColor(Color.parseColor("#95a5a6"));
                             break;
                     }
+
+
+                    //canvas.drawBitmap(scaledBlood, posX, posY, null);
                     canvas.drawCircle(posX, posY, 50, paint);
                 }
             }

@@ -71,14 +71,43 @@ public class ShopAndAchievementCanvas extends View{
         //int tempRightStart = RECT_X_MIN + 50;
         int tempRightStart = tempX + WIDTH;
         int intPos = 0;
+
         /*
-        for(int tempLeftStart = RECT_X_MIN; tempLeftStart < RECT_X_MAX; tempLeftStart += 70) {
-            rightStart[intPos] = tempRightStart;
-            leftStart[intPos] = tempLeftStart;
-            tempRightStart += 70;
+        int[] circleXPos = new int[5];
+        int[] circleYPos = new int[10];
+        int tempXCircle = (canvas.getWidth() / 2) - 250;
+
+        for(int tempCircleXPos = tempXCircle; tempCircleXPos < (tempXCircle + (125 * 5)); tempCircleXPos += 125) {
+            Log.d("t", "ta");
+            circleXPos[intPos] = tempCircleXPos;
+            circleYPos[intPos] = (canvas.getHeight() / 2) - 75;
+            //tempXCircle += 75;
             intPos++;
+            Log.d("t", "taa");
+        }
+
+        for(int i = 5; i < 10; i++){
+            circleYPos[i] = (canvas.getHeight() / 2) + 75;
+        }
+
+        colorNum = 0;
+        int a = 0;
+        //Rad 1
+        for (int i = 0; i < 5; i++) {
+            paint.setColor(Color.parseColor(colorArray[colorNum]));
+            canvas.drawCircle(circleXPos[i], circleYPos[i], 50, paint);
+            colorNum++;
+        }
+        //Rad 2
+        for (int i = 5; i < 10; i++) {
+            paint.setColor(Color.parseColor(colorArray[colorNum]));
+            canvas.drawCircle(circleXPos[a], circleYPos[i], 50, paint);
+            a++;
+            colorNum++;
         }
         */
+
+
         for(int tempLeftStart = tempX; tempLeftStart < (tempX + WIDTH_AND_SPACE * 5); tempLeftStart += 70) {
             rightStart[intPos] = tempRightStart;
             leftStart[intPos] = tempLeftStart;
@@ -135,6 +164,7 @@ public class ShopAndAchievementCanvas extends View{
             editor.putInt("color", 10);
         }
         editor.commit();
+
 
         /*
         paint.setColor(Color.parseColor(colorArray[0]));
