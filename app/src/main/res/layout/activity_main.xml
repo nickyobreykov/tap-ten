@@ -60,4 +60,14 @@
         android:text="Shop"
         android:layout_marginTop="10dp"/>
 
+    <TextView
+        android:id="@+id/totalTapsTV"
+        android:layout_below="@id/shopBtn"
+        android:textSize="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="Total Taps: 0"/>
+
 </RelativeLayout>

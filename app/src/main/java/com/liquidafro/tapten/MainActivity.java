@@ -34,6 +34,7 @@ public class MainActivity extends Activity {
     ImageView settingsBtn;
     Button shopBtn;
     TextView logoTV;
+    TextView totalTapsTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -112,6 +113,10 @@ public class MainActivity extends Activity {
                 startActivity(shopIntent);
             }
         });
+
+        int tempTotalTaps = preferences.getInt("totalTaps", 0);
+        totalTapsTV = (TextView) findViewById(R.id.totalTapsTV);
+        totalTapsTV.setText("Total Taps: " + tempTotalTaps);
 
 
     }
